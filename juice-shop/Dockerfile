@@ -4,9 +4,9 @@ FROM $BUILD_FROM AS BUILD
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache \
-	git=2.36.2-r0 \
+	git=2.36.6-r0 \
 	npm=8.10.0-r0 \
-	python3=3.10.5-r0 \
+	python3=3.10.14-r1 \
 	build-base=0.5-r3 
 
 # Splited RUN for better layer caching
