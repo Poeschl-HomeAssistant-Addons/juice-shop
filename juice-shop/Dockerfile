@@ -12,10 +12,10 @@ RUN apk add --no-cache \
 # Splited RUN for better layer caching
 # hadolint ignore=DL3059
 RUN git config --global advice.detachedHead false && \
-    git clone https://github.com/bkimminich/juice-shop.git -b v14.1.1 /app
+    git clone https://github.com/juice-shop/juice-shop.git -b v19.0.0 /app
 
 WORKDIR /app
-RUN npm install typescript@4.7.4 ts-node@10.9.1 && \
+RUN npm install typescript@5.9.2 ts-node@10.9.2 && \
 	npm install --omit=dev --unsafe-perm && \
 	npm dedupe && \
 	rm -rf frontend/node_modules && \
