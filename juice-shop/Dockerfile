@@ -4,18 +4,18 @@ FROM $BUILD_FROM AS BUILD
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache \
-	git=2.36.6-r0 \
-	npm=8.10.0-r0 \
-	python3=3.10.14-r1 \
-	build-base=0.5-r3 
+	git=2.49.1-r0 \
+	npm=11.3.0-r1 \
+	python3=3.12.11-r0 \
+	build-base=0.5-r3
 
 # Splited RUN for better layer caching
 # hadolint ignore=DL3059
 RUN git config --global advice.detachedHead false && \
-    git clone https://github.com/bkimminich/juice-shop.git -b v14.1.1 /app
+    git clone https://github.com/juice-shop/juice-shop.git -b v19.0.0 /app
 
 WORKDIR /app
-RUN npm install typescript@4.7.4 ts-node@10.9.1 && \
+RUN npm install typescript@5.9.2 ts-node@10.9.2 && \
 	npm install --omit=dev --unsafe-perm && \
 	npm dedupe && \
 	rm -rf frontend/node_modules && \
@@ -30,7 +30,7 @@ RUN npm install typescript@4.7.4 ts-node@10.9.1 && \
 FROM $BUILD_FROM AS RUNNING
 
 RUN apk add --no-cache \
-    npm=8.10.0-r0
+    npm=11.3.0-r1
 
 WORKDIR /app
 
