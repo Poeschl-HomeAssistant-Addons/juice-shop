@@ -5,7 +5,7 @@ ENV LANG C.UTF-8
 
 RUN apk add --no-cache \
 	git=2.49.1-r0 \
-	npm=11.4.2-r0 \
+	npm=11.6.4-r0 \
 	python3=3.12.12-r0 \
 	build-base=0.5-r3
 
@@ -30,7 +30,7 @@ RUN npm install typescript@5.9.2 ts-node@10.9.2 && \
 FROM $BUILD_FROM AS RUNNING
 
 RUN apk add --no-cache \
-    npm=11.4.2-r0
+    npm=11.6.4-r0
 
 WORKDIR /app
 
